@@ -5,9 +5,12 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -34,6 +37,21 @@ public class MainActivity extends AppCompatActivity {
 
     private void createNotificacion(){
         NotificationCompat.Builder builder= new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID);
+        Context contexto = getApplicationContext();
+        NotificationManager notificador = (NotificationManager) getSystemService(contexto.NOTIFICATION_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            String canalID="2";
+            String canalNombre = "Mensajes";
+            String canalDescribe = "Canal de mensajes";
+            int importancia = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel miCanal = new NotificationChannel(canalID, canalNombre, importancia);
+            miCanal.setDescription(canalDescribe);
+            miCanal.enableLights(true);
+            miCanal.setLightColor(Color.BLUE); // Esto no lo soportan todos los dispositivos
+            miCanal.enableVibration(true);
+            notificador.createNotificationChannel(miCanal);
+            builder = new NotificationCompat.Builder(contexto, canalID);
+        }
         builder.setSmallIcon(R.drawable.ic_baseline_add_alert_24);
         builder.setContentTitle("notificacion androi");
         builder.setContentText("wena conmpadre");
