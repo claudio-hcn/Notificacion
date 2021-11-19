@@ -4,25 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+></Space>
     <Button
         android:id="@+id/btNotificacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="Enviar notificacion" />
 
     <Space
-        android:layout_width="30dp"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
 >
-
     </Space>
     <Button
-        android:id="@+id/wea"
+        android:id="@+id/btnActualizar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="wena" />
+        android:layout_gravity="center"
+        android:text="actualizar notificación" />
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        >
+    </Space>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Cancelar Notificaciones"
+        ></Button>
 
 
 </LinearLayout>
